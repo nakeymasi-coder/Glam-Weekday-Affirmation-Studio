@@ -92,6 +92,48 @@ select[multiple]{min-height:132px;max-height:190px;overflow:auto}
 @media(max-width:760px){.heroShowcase{margin:12px -12px -18px}.heroShowcase img{height:clamp(190px,58vw,360px);object-position:center center}}
 
 button, .btn, .lock {min-height:44px} select,input {max-width:100%} .miniOut {overflow-wrap:anywhere} :focus-visible {outline:3px solid #168fea;outline-offset:3px} @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+/* Focused studio workspace */
+body{background:#f3f5fa;color:#20283b;padding:0}
+:root{--line:#dce1ec;--panel:#fff;--soft:#56617a;--gold:#354cd6;--glow:none}
+.stage,.side,.marquee{display:none}
+.wrap{max-width:1500px;padding:20px 24px 28px 242px}
+.hero{background:transparent;border:0;box-shadow:none;border-radius:0;text-align:left;padding:4px 0 18px}
+.brand{font-size:clamp(1.3rem,3vw,2rem);text-transform:none;letter-spacing:-.6px;text-shadow:none;color:#20283b;line-height:1.2}
+.heroShowcase{margin:0;background:transparent;border:0}
+.heroShowcase img{height:250px;object-fit:contain}
+.heroShowcase p{font-size:13px;color:#647089}
+.studioNav{position:fixed;inset:0 auto 0 0;width:218px;background:#fff;border-right:1px solid var(--line);padding:28px 14px;z-index:30;display:flex;flex-direction:column;gap:7px}
+.navBrand{font-size:18px;font-weight:800;padding:0 12px 26px;color:#354cd6}
+.studioNav button,.subTabs button{border:0;background:transparent;color:#59647a;text-align:left;padding:12px 14px;border-radius:10px;cursor:pointer;font:inherit;font-weight:650;min-height:44px}
+.studioNav button[aria-selected=true],.subTabs button[aria-selected=true]{background:#ebeeff;color:#3046c5}
+.panel{background:#fff;border:1px solid var(--line);box-shadow:none;backdrop-filter:none;border-radius:16px;padding:22px}
+.boxTitle,summary,h3,.footer,.genderHeart{color:#25304a;text-shadow:none}
+.topbar{position:static;display:flex;justify-content:flex-start;background:transparent;border:0;box-shadow:none;padding:0;margin:0 0 18px}
+.btn,.btn.blue{background:#354cd6;color:#fff;box-shadow:none;border-radius:9px;font-weight:650;padding:11px 16px;font-size:14px}
+.btn.blue{background:#edf0fa;color:#34436c}.btn:hover{box-shadow:none;transform:none;filter:brightness(.96)}
+select,input,textarea{background:#f9faff;color:#25304a;border-color:#d8deeb;border-radius:9px}
+details{background:#fff;border-color:#e2e6f0;border-radius:12px}
+summary::after{color:#727e99}.lock{background:#f1f3fc;color:#34436c;border-color:#dce1ef}
+.miniOut{background:#f8f9fd;border-color:#e1e6f1;color:#303c54;border-radius:12px;max-height:42vh;overflow:auto}
+.note,#multiSelectHelp{color:#6b7690;font-size:14px}
+.presets{max-height:55vh;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
+.preset,.chip{background:#f7f8fe;color:#3b4868;border:1px solid #dce2f1;border-radius:10px;box-shadow:none}
+.preset.active,.chip.active{background:#e7ecff;color:#3046c5;box-shadow:none;border-color:#8798e7}
+#controls{grid-template-columns:repeat(2,minmax(0,1fr))}
+.subTabs{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:18px;border-bottom:1px solid #e6eaf3;padding-bottom:12px}
+.subTabs button{padding:9px 12px;font-size:14px}
+.workspaceHidden{display:none!important}
+.footer{font-size:12px;color:#8992a5;margin-top:18px;font-weight:500}
+#studioStatus{color:#354cd6}
+@media(max-width:760px){
+.wrap{padding:16px 12px 28px}.studioNav{position:sticky;top:0;width:100%;height:auto;flex-direction:row;overflow-x:auto;padding:8px;border:0;border-bottom:1px solid #dce1ec;gap:4px}
+.navBrand{display:none}.studioNav button{white-space:nowrap;font-size:13px;padding:10px}
+.hero{padding:8px 0 14px}.heroShowcase img{height:170px}
+.topbar{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px}
+.panel{padding:15px}#controls{grid-template-columns:1fr}.subTabs{gap:3px}.subTabs button{font-size:13px;padding:8px}
+.presets{grid-template-columns:1fr 1fr}.miniOut{max-height:45vh}.two{grid-template-columns:1fr}
+}
 </style>
 </head>
 <body>
@@ -104,7 +146,7 @@ button, .btn, .lock {min-height:44px} select,input {max-width:100%} .miniOut {ov
   <section class="panel builderSection" id="videoSection"><div class="sectionHeader"><h2 class="boxTitle">8-Second Animated Video Script</h2><div class="sectionActions"><button class="btn blue" onclick="generateVideo()">Generate Video Script</button><button class="btn" onclick="copyText('videoOutput')">Copy Video Script</button></div></div><div id="videoOutput" class="miniOut outputWide"></div></section>
   <section class="panel builderSection" id="sunoSection"><div class="sectionHeader"><h2 class="boxTitle">Suno Music Controls</h2><div class="sectionActions"><button class="btn blue" onclick="generateMusic()">Generate Suno Outputs</button></div></div><p class="note">Choose the sound vibe. These controls feed the jingle, 30-second song, 1-minute song, and settings.</p><h3>Genre Selection</h3><div id="genreChips" class="chips"></div><input class="custom" id="customGenreText" placeholder="Custom genre selection..." oninput="generateMusic()"><h3>Style Influence Selection</h3><div id="styleChips" class="chips"></div><input class="custom" id="customStyleText" placeholder="Custom style influence..." oninput="generateMusic()"><h3>Vocal Type</h3><div id="vocalChips" class="chips"></div><input class="custom" id="customVocalText" placeholder="Custom vocal type..." oninput="generateMusic()"><h3>Audio Settings</h3><div id="sliders"></div><div class="two outputStack"><div><h3>Jingle</h3><div id="jingleOutput" class="miniOut"></div><button class="btn" onclick="copyText('jingleOutput')">Copy Jingle</button></div><div><h3>30-Second Song</h3><div id="song30Output" class="miniOut"></div><button class="btn" onclick="copyText('song30Output')">Copy 30-Second</button></div><div><h3>1-Minute Song</h3><div id="song60Output" class="miniOut"></div><button class="btn" onclick="copyText('song60Output')">Copy 1-Minute</button></div><div><h3>Suggested Suno Settings</h3><div id="settingsOutput" class="miniOut"></div><button class="btn" onclick="copyText('settingsOutput')">Copy Settings</button></div></div></section>
   <section class="panel builderSection" id="marketingSection"><div class="sectionHeader"><h2 class="boxTitle">Marketing Content Suite</h2><div class="sectionActions"><button class="btn blue" onclick="generateMarketing()">Generate Marketing</button></div></div><div id="marketingGrid" class="outputs"></div></section>
-  <section class="panel builderSection"><div class="sectionHeader"><h2 class="boxTitle">Custom GPT Instructions</h2><div class="sectionActions"><button class="btn blue" onclick="generateGPT()">Generate Custom GPT Outputs</button></div></div><h3>Custom GPT Instructions</h3><div id="gptInstructions" class="miniOut"></div><button class="btn" onclick="copyText('gptInstructions')">Copy Instructions</button><h3>Starter Questions</h3><div id="starterQuestions" class="miniOut"></div><button class="btn" onclick="copyText('starterQuestions')">Copy Starter Questions</button><h3>Knowledge</h3><div id="gptKnowledge" class="miniOut"></div><button class="btn" onclick="copyText('gptKnowledge')">Copy Knowledge</button></section>
+  <section class="panel builderSection"><div class="sectionHeader"><h2 class="boxTitle">Custom Skill Instructions</h2><div class="sectionActions"><button class="btn blue" onclick="generateGPT()">Generate Skill Instructions</button></div></div><h3>Custom Skill Instructions</h3><div id="gptInstructions" class="miniOut"></div><button class="btn" onclick="copyText('gptInstructions')">Copy Instructions</button><h3>Starter Questions</h3><div id="starterQuestions" class="miniOut"></div><button class="btn" onclick="copyText('starterQuestions')">Copy Starter Questions</button><h3>Knowledge</h3><div id="gptKnowledge" class="miniOut"></div><button class="btn" onclick="copyText('gptKnowledge')">Copy Knowledge</button></section>
   <details class="panel builderSection"><summary>Prompt History</summary><div id="history"></div></details>
 </div><footer class="footer">all rights reserved by glamorousgrammyglowup</footer></main>
 <script>
@@ -502,7 +544,32 @@ function savePrompt(){const p=document.getElementById('mainOutput').textContent;
 function loadHistory(){const e=document.getElementById('history');e.replaceChildren();const h=readHistory();if(!h.length){e.textContent='No saved prompts yet.';return;}h.forEach((p,i)=>{const box=document.createElement('div');box.className='miniOut';const text=document.createElement('div');text.id='savedPrompt_'+i;text.textContent=p;box.append(text);const copy=document.createElement('button');copy.className='btn';copy.textContent='Copy Saved Prompt '+(i+1);copy.onclick=()=>copyText(text.id);const restore=document.createElement('button');restore.className='btn';restore.textContent='Restore Saved Prompt '+(i+1);restore.onclick=()=>{document.getElementById('mainOutput').textContent=p;notice('Saved output restored. Current controls are unchanged.');};box.append(copy,restore);e.append(box);});}
 function clearAll(){Object.keys(cats).forEach(k=>{setVal(k,k==='Prompt Length Mode'?'Short':'None');document.getElementById('custom_'+id(k)).value='';const b=document.getElementById('lock_'+id(k));b.classList.remove('on');b.textContent='🔓';b.setAttribute('aria-pressed','false');});selectedPreset='';document.querySelectorAll('.preset,.chip').forEach(e=>e.classList.remove('active'));document.querySelectorAll('#sliders input').forEach(e=>{e.value='45';e.nextElementSibling.textContent='45%';});['customGenreText','customStyleText','customVocalText'].forEach(k=>document.getElementById(k).value='');applyGender();document.querySelectorAll('.miniOut').forEach(e=>{if(!e.closest('#history')&&!['gptInstructions','starterQuestions','gptKnowledge'].includes(e.id))e.textContent='';});document.getElementById('videoOutput').textContent='';document.getElementById('mainOutput').textContent='Choose a preset or build your glam poster prompt, then click Generate.';document.getElementById('variationsOutput').textContent='Your three prompt variations will appear here.';notice('Selections and generated outputs cleared. Saved history kept.');}
 function toggleLock(cat,event){event.preventDefault();const b=event.currentTarget;const on=b.classList.toggle('on');b.textContent=on?'🔒':'🔓';b.setAttribute('aria-pressed',String(on));}
-function generateGPT(){document.getElementById('gptInstructions').textContent='You help users write affirmation poster prompts. Ask for their day, affirmation, visual style, layout and character details. Honor every explicit choice, including age, skin tone, plus-size body proportions and selected props. Do not invent unselected decorations. Keep character identity consistent across variations. No crowns or tiaras. Produce one complete prompt per canvas. Explain that prompts must be used in a separate image, video or music tool. For video retain identity and selected framing. Instrumental music directions must contain no sung or spoken lyrics.';document.getElementById('starterQuestions').textContent='1. Help me create a Monday affirmation poster prompt.\n2. Keep my character consistent across three scene variations.\n3. Turn my selected affirmation into a short video direction.\n4. Create instrumental music directions for my poster.';document.getElementById('gptKnowledge').textContent='Glam Weekday Affirmation Studio is a static prompt-writing tool with 25 day and daily presets, custom categories, Short/Detailed/Full modes, locks, variations, video directions, Suno directions, marketing copy and local prompt history. None omits optional details. It does not generate images, video or audio. Preserve adult character identity and proportions. Prompts are saved on the current device.';}
+function generateGPT(){
+document.getElementById('gptInstructions').textContent=`---
+name: weekday-affirmation-studio
+description: Create customized weekday affirmation poster prompts, consistent variations, short video directions, music briefs, and promotional copy. Use when a user asks for affirmation artwork prompts or related content.
+---
+
+# Weekday Affirmation Studio
+
+## Workflow
+1. Identify the requested output: poster prompt, variations, video direction, music brief, or marketing copy.
+2. Use details the user already provided. If essential information is missing, ask one short question for the day, affirmation, or desired visual style. Make optional details explicit rather than inventing decorations.
+3. Build a complete, self-contained prompt with the selected day, exact poster text, layout, aspect ratio, character, wardrobe, scene, palette, lighting, and typography. Omit categories marked None.
+4. Preserve requested adult age, skin tone, facial features, body type, and proportions. Never slim a plus-size person. Do not add crowns, tiaras, props, or other unrequested elements.
+5. Keep text accurately spelled and legible with safe margins. Produce one concept per canvas, not a collage.
+6. Honor locked selections. Variations may change only unlocked details; keep character identity consistent.
+7. For video, preserve the image identity and framing. Provide a clear 0–2, 2–4, 4–6, and 6–8 second sequence without adding unrequested props.
+8. For music, specify genre, mood, vocal choice, duration target, and settings. Instrumental means no singing, speech, or lyrics.
+9. For marketing, adapt the selected affirmation to the requested platform and give a clear relevant call to action.
+10. Return clearly labeled copyable outputs. Be honest about capabilities: written prompts are not rendered images, videos, or music. Use generation tools only if available and requested; never claim a file was created or published when it was not.
+
+## Review
+Check all explicit choices, identity details, exact text, locked fields, omitted categories, and output format before delivery.`;
+document.getElementById('starterQuestions').textContent='Create a Monday affirmation poster prompt.\nKeep my character consistent across three scene variations.\nTurn my affirmation into an 8-second video direction.\nCreate an instrumental music brief for this poster.';
+document.getElementById('gptKnowledge').textContent='Save the reusable instructions as SKILL.md inside a folder named weekday-affirmation-studio. Add that folder through your platform’s supported skill installation workflow; installation steps vary by platform. Example requests can be used to check the skill after installation.\n\nThis app writes prompts and briefs; it does not render media or install skills. It includes weekday and daily presets, custom selections, length modes, locks, variations, video directions, music briefs and marketing copy. Saved prompts remain on the current device.';
+}
+
 
 function build(){legacyBuild();
  const status=document.createElement('p');status.id='studioStatus';status.setAttribute('role','status');document.getElementById('mainOutput').before(status);
@@ -513,7 +580,51 @@ function build(){legacyBuild();
  document.querySelectorAll('#sliders input').forEach((e,i)=>e.setAttribute('aria-label',['Weirdness','Style Influence','Audio Influence'][i]));
 }
 
+
+function setupWorkspace(){
+ const flow=document.querySelector('.builderFlow');
+ const skill=document.getElementById('gptInstructions').closest('section');skill.id='skillSection';
+ skill.querySelector('h2').textContent='Custom Skill Instructions';
+ skill.querySelector('h3').textContent='SKILL.md — reusable instructions';
+ skill.querySelector('button').textContent='Generate Skill Instructions';
+ const headings=skill.querySelectorAll('h3');headings[1].textContent='Example Requests';headings[2].textContent='Setup & Reference Notes';
+ skill.querySelectorAll('button')[2].textContent='Copy Example Requests';
+ skill.querySelectorAll('button')[3].textContent='Copy Setup Notes';
+ const history=document.getElementById('history').closest('details');history.id='savedSection';history.open=true;
+ const results=document.createElement('section');results.id='resultsSection';results.className='panel builderSection';
+ results.append(document.querySelector('#categorySection .outputStack'));flow.append(results);
+ const nav=document.createElement('nav');nav.className='studioNav';nav.setAttribute('aria-label','Studio sections');nav.innerHTML='<div class="navBrand">Weekday Studio</div>';document.body.prepend(nav);
+ const pages=[['presetSection','Presets'],['categorySection','Create'],['resultsSection','Results'],['videoSection','Video'],['sunoSection','Music'],['marketingSection','Marketing'],['skillSection','Skill Instructions'],['savedSection','Saved']];
+ const showcase=document.querySelector('.heroShowcase');
+ function show(page){
+  pages.forEach(([key])=>document.getElementById(key).classList.toggle('workspaceHidden',key!==page));
+  nav.querySelectorAll('button').forEach(b=>b.setAttribute('aria-selected',String(b.dataset.page===page)));
+  showcase.classList.toggle('workspaceHidden',page!=='presetSection');
+ }
+ pages.forEach(([key,label])=>{const b=document.createElement('button');b.textContent=label;b.dataset.page=key;b.setAttribute('role','tab');b.onclick=()=>show(key);nav.append(b);});
+ nav.setAttribute('role','tablist');
+ function subTabs(container,items,label){
+  const bar=document.createElement('div');bar.className='subTabs';bar.setAttribute('aria-label',label);bar.setAttribute('role','tablist');container.prepend(bar);
+  items.forEach(([name,nodes],i)=>{const b=document.createElement('button');b.textContent=name;b.setAttribute('role','tab');b.onclick=()=>{items.forEach(([,ns],j)=>ns.forEach(n=>n.classList.toggle('workspaceHidden',j!==i)));Array.from(bar.children).forEach((x,j)=>x.setAttribute('aria-selected',String(i===j)));};bar.append(b);if(i===0)b.click();});
+  bar.firstChild.click();
+ }
+ const groups={};
+ document.querySelectorAll('#controls details[data-cat]').forEach(d=>{
+  const c=d.dataset.cat;
+  const g=/Day|Headline|Affirmation|Quote|Text Option/.test(c)?'Words':/Gender|Ethnicity|Skin|Body|Age|Hair|Hairstyle|Face|Expression|Pose/.test(c)?'Character':/Outfit|Shoes|Accessories|Clothing/.test(c)?'Wardrobe':/Background|Location|Season|Time of Day|Weather|Fog/.test(c)?'Scene':/Typography|Font|Color|Effects|Lighting|Shadow|Ornate/.test(c)?'Style':'Format & Extras';
+  (groups[g]||=[]).push(d);d.open=true;
+ });
+ subTabs(document.getElementById('categorySection'),Object.entries(groups),'Create categories');
+ subTabs(document.getElementById('marketingSection'),Array.from(document.getElementById('marketingGrid').children).map(d=>[d.querySelector('h3').textContent,[d]]),'Marketing formats');
+ const musicOut=document.querySelector('#sunoSection .outputStack');
+ subTabs(musicOut,Array.from(musicOut.children).map(d=>[d.querySelector('h3').textContent,[d]]),'Music outputs');
+ document.querySelector('.topbar button').onclick=()=>{generatePrompt();show('resultsSection');};
+ const oldPreset=applyPreset;applyPreset=function(name,b){oldPreset(name,b);show('categorySection');};
+ show('presetSection');generateGPT();
+}
+
 build();
+setupWorkspace();
 </script>
 </body>
 </html>
