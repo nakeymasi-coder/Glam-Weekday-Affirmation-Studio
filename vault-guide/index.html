@@ -1,0 +1,43 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>Vault guide protection plan (branch only)</title><style>*{box-sizing:border-box}body{margin:0;min-height:100vh;font-family:Georgia,'Times New Roman',serif;color:#0b2b4a;background:radial-gradient(120% 80% at 50% 0%,#e9f4fe 0%,#f7fbff 55%,#eef2f6 100%);line-height:1.55}
+.wrap{max-width:640px;margin:0 auto;padding:28px 18px 64px}.brand{font:700 13px system-ui,sans-serif;letter-spacing:.14em;color:#168FEA;text-transform:uppercase}
+h1{font-size:clamp(28px,7vw,40px);line-height:1.1;margin:8px 0 6px}p.sub{margin:0 0 22px;color:#3d5670}
+a.btn,button.btn{display:flex;align-items:center;gap:10px;text-decoration:none;border-radius:16px;padding:15px 18px;margin:0 0 12px;font:700 16px system-ui,sans-serif;border:1px solid #cfe0ef;background:#fff;color:#0b2b4a;box-shadow:0 8px 24px -14px rgba(11,43,74,.35);cursor:pointer;min-height:48px;width:100%;text-align:left}
+a.main{background:linear-gradient(135deg,#168FEA,#0f6fbd);color:#fff;font-size:18px;padding:20px;border:0}
+.card{background:#fff;border:1px solid #d6e4f0;border-radius:16px;padding:16px;margin:0 0 14px}.card h2{font-size:20px;margin:0 0 6px}
+.copy{font:700 14px system-ui,sans-serif;min-height:44px;padding:0 16px;border-radius:10px;border:2px solid #0b2b4a;background:#fff;color:#0b2b4a;cursor:pointer}.copy.on{background:#168FEA;border-color:#168FEA;color:#fff}
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 16px}.tab{font:700 14px system-ui,sans-serif;min-height:44px;padding:0 14px;border-radius:99px;border:1px solid #9cc3e4;background:#fff;color:#0b2b4a;cursor:pointer}.tab[aria-pressed=true]{background:#0b2b4a;color:#fff;border-color:#0b2b4a}
+pre{white-space:pre-wrap;word-break:break-word;font:15px/1.5 system-ui,sans-serif;background:#f1f6fb;border-radius:10px;padding:12px;margin:8px 0}.lbl{font:700 12px system-ui,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#4a6784}
+.back{display:inline-block;margin:0 0 14px;color:#0f6fbd;font:700 14px system-ui,sans-serif;text-decoration:none}.foot{margin-top:28px;font:12px system-ui,sans-serif;color:#7a8ea3;text-align:center}
+.step{display:flex;gap:12px;align-items:flex-start}.step input{width:26px;height:26px;margin-top:3px;flex:none}.done{opacity:.55}.bar{height:10px;background:#d6e4f0;border-radius:9px;overflow:hidden;margin:6px 0 18px}.bar i{display:block;height:100%;background:#168FEA;width:0;transition:width .25s}
+details{background:#fff;border:1px solid #d6e4f0;border-radius:14px;margin:0 0 10px}summary{padding:14px 16px;font:700 16px system-ui,sans-serif;cursor:pointer;min-height:48px}details .in{padding:0 16px 14px}
+:focus-visible{outline:3px solid #168FEA;outline-offset:2px}@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+.k{font:13px/1.4 ui-monospace,Menlo,monospace;word-break:break-all;background:#f1f6fb;border-radius:8px;padding:6px 8px;display:block;margin:4px 0}
+.warn{background:#fdecea;border:1px solid #f1a9a0;border-radius:12px;padding:12px;font:14px/1.5 system-ui,sans-serif;margin:0 0 14px}</style></head><body><main class="wrap">
+<div class="brand">Dre &middot; Tech Director &middot; branch fixes-nov19 only</div>
+<h1>Vault buyers: keep the old guide untouched</h1>
+<p class="sub">Rule: nobody who already bought loses a page or hits a broken link. Nothing here is live.</p>
+<div class="warn"><b>Open item:</b> no old Vault guide exists in either repository (no guide folder on main; the only guide files are the new ones on this branch). I need the exact URL(s) the Vault product points at today. Until then no copy can be made, and nothing may be repointed.</div>
+<div class="card"><h2>Plan</h2>
+<label class="step"><input type="checkbox"><span>Get the Vault product's current guide link(s) from Glam or Zyvella (the product's delivery page).</span></label>
+<label class="step"><input type="checkbox"><span>Save a frozen copy of that guide into this folder (<b>vault-guide/</b>) exactly as it is. Never edit it again.</span></label>
+<label class="step"><input type="checkbox"><span>Host the frozen copy at a NEW address first, open it, and check every link inside it.</span></label>
+<label class="step"><input type="checkbox"><span>Only then repoint the Vault product to the frozen copy. The old address stays up until the check list below passes.</span></label>
+<label class="step"><input type="checkbox"><span>New guide (guide/ folder) goes to new buyers only. It never replaces the old address.</span></label>
+<label class="step"><input type="checkbox"><span>No PDF anywhere. If the old guide is a PDF, keep the PDF reachable for old buyers and tell Glam so she can decide.</span></label></div>
+<div class="card"><h2>Links that must keep working (go-live check list)</h2>
+<p style="font:14px/1.5 system-ui,sans-serif;margin:0 0 8px">Checked today on the live site, read-only:</p>
+<label class="step"><input type="checkbox"><span>Store page <i class="k">https://glamhustlehub.com/products/glam-weekday-affirmation-studio</i> (opens, 200)</span></label>
+<label class="step"><input type="checkbox"><span>App <i class="k">https://glamhustlehub.com/apps/DZ0ui50NMzQe/index.html</i> (opens the sign-in lock page, 200). Buyer sign-in at /open-app/DZ0ui50NMzQe still works.</span></label>
+<label class="step"><input type="checkbox"><span>Support <i class="k">https://glamhustlehub.com/support</i></span></label>
+<label class="step"><input type="checkbox"><span>Install files in the app folder: manifest, icon-192, icon-512, apple-touch-icon (home-screen installs must not break).</span></label>
+<label class="step"><input type="checkbox"><span>Free Friday generator: its Unlock button points to the store page above.</span></label>
+<label class="step"><input type="checkbox"><span>Community link in the guide index (Facebook group).</span></label>
+<p style="font:14px/1.5 system-ui,sans-serif;margin:8px 0">Today <i class="k">/apps/DZ0ui50NMzQe/guide/</i> and its three pages return the site shell, so the new guide does not overwrite any real page.</p>
+<p style="font:14px/1.5 system-ui,sans-serif;margin:8px 0"><b>Still needed from Glam or Zyvella:</b> the Vault product's guide URL(s), the delivery email link, and any Skool or Kit post that links to the old guide.</p></div>
+<div class="card"><h2>Go-live checks (run after any deploy)</h2>
+<label class="step"><input type="checkbox"><span>Every link above returns 200 and shows the right page.</span></label>
+<label class="step"><input type="checkbox"><span>Old guide address still opens, looks identical, all its links work.</span></label>
+<label class="step"><input type="checkbox"><span>Sign in as a real old buyer on a phone: app opens, History still shows their saved prompts.</span></label>
+<label class="step"><input type="checkbox"><span>Home-screen install still opens.</span></label>
+<label class="step"><input type="checkbox"><span>Rollback ready: previous deploy noted, one click to restore.</span></label></div>
+<script>document.addEventListener('change',e=>{if(e.target.type==='checkbox')e.target.closest('label').classList.toggle('done',e.target.checked)})</script></main></body></html>
